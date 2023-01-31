@@ -1,0 +1,54 @@
+<p>Add Staff</p>
+<mat-card >
+    <mat-card-header>
+     
+    </mat-card-header>
+    <mat-card-content>
+        <form [formGroup]="staffForm" (ngSubmit)="addStaff()">
+            <div class="col-12">
+                <label for="yourUsername" class="form-label">Name</label>
+                <div class="input-group has-validation">
+                   <span class="input-group-text" id="inputGroupPrepend"><i class="fa-solid fa-user"></i></span>
+                    <input type="text" placeholder="Type your Name" class="form-control" formControlName="name"  required>
+                </div>
+             </div>
+
+            <div class="col-12">
+                <label for="yourUsername" class="form-label">Email Id</label>
+                <div class="input-group has-validation">
+                   <span class="input-group-text" id="inputGroupPrepend"><i class="fa-solid fa-envelope"></i></span>
+                    <input type="text" placeholder="Email Id" class="form-control" formControlName="staffEmail"  required>
+                </div>
+             </div>
+
+             <div class="col-12">
+                <label for="yourUsername" class="form-label">Password</label>
+                <div class="input-group has-validation">
+                   <span class="input-group-text" id="inputGroupPrepend"><i class="fa-solid fa-lock"></i></span>
+                    <input type="password" placeholder="Password" class="form-control"  formControlName="password" required>
+                </div>
+             </div>
+             <div class="col-12">
+                <label for="yourUsername" class="form-label">Phone No</label>
+                <div class="input-group has-validation">
+                   <span class="input-group-text" id="inputGroupPrepend"><i class="fa-solid fa-phone"></i></span>
+                    <input type="text" placeholder="Phone No" class="form-control" formControlName="phoneNo"  required>
+                </div>
+             </div>
+
+             <div class="col-12">
+                <label for="yourUsername" class="form-label">Status</label>
+                <select class="form-select" aria-label="Default select example" formControlName="status">
+                   <option selected> select the Status</option>
+                   <option value="Activate">Activate</option>
+                   <option value="Deactivate">deactivate</option>
+                   <option value="Default">Default</option>
+                 </select>
+              </div>
+              <button mat-button type="submit" mat-dialog-close>submit</button>
+              
+        </form>
+    </mat-card-content>
+   
+  
+  </mat-card>

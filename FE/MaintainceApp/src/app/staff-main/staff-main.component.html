@@ -1,0 +1,63 @@
+<p>staff-main works!</p>
+<div>
+  <h2>{{staffName}}</h2>
+  <h4>{{staffStatus}}</h4>
+</div>
+ <!-- Active account -->
+<table class="table table-dark table-striped-columns" *ngIf="staffStatus==='Activate'">
+    <thead>
+      <tr style="font-weight: 200px; margin:1px;text-align: center;">
+        
+        <td>Day</td>
+        <td>Time</td>
+        <td>work</td>
+        <td>Attendance</td>
+        <td></td>
+       
+      </tr>
+    </thead>
+    <tbody *ngFor="let t of routineList" >
+      <tr style="text-align: center;">
+        <td>{{t.day}}</td>
+        <td>{{t.time}}</td>
+        <td>{{t.work}}</td>
+        <td><mat-radio-group aria-label="Select an option"  (change)="status($event.value)">
+            <mat-radio-button value="Present">Present</mat-radio-button>
+            <mat-radio-button value="Absent">Absent</mat-radio-button>
+          </mat-radio-group></td>
+          <td><button (click)="save(t)">submit</button></td>
+       
+        
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- Deactive account -->
+
+  <table class="table table-dark table-striped-columns" *ngIf="staffStatus==='Deactivate'">
+    <thead>
+      <tr style="font-weight: 200px; margin:1px;text-align: center;">
+        
+        <td>Day</td>
+        <td>Time</td>
+        <td>work</td>
+        <td>Attendance</td>
+        <td></td>
+       
+      </tr>
+    </thead>
+    <tbody *ngFor="let t of routineList" >
+      <tr style="text-align: center;">
+        <td>{{t.day}}</td>
+        <td>{{t.time}}</td>
+        <td>{{t.work}}</td>
+        <td><mat-radio-group aria-label="Select an option"  >
+            <mat-radio-button value="Present">Present</mat-radio-button>
+            <mat-radio-button value="Absent">Absent</mat-radio-button>
+          </mat-radio-group></td>
+          <td><button >submit</button></td>
+       
+        
+      </tr>
+    </tbody>
+  </table>

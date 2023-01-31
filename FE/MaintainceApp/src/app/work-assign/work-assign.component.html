@@ -1,0 +1,209 @@
+<p>work-assign works!</p>
+<div>
+  <h3>search</h3>
+  <div style="display: inline-flex; margin-left: 100px;margin-bottom: 50px;">
+    <div class="col-6">
+      <label for="yourUsername" class="form-label">Name</label>
+      
+      <select class="form-select" aria-label="Default select example" #email (change)="stffEmail(email.value)" >
+        <option selected>Select the name of staff</option>
+         <option *ngFor=" let t of staffList" value="{{t.staffEmail}}"> {{t.name}}</option>
+                     </select>
+       </div>
+
+       <div class="col-6">
+        <label for="yourUsername" class="form-label">time</label>
+        
+        <select class="form-select" aria-label="Default select example" #time (change)="stime(time.value)" >
+          <option selected>Select the time</option>
+           <option value="10Am-12PM"> 10Am to 12PM</option>
+           <option value="12Pm-2PM" > 12Pm to 2PM</option>
+           <option value="2Pm-4PM" >2Pm to 4PM </option>
+                       </select>
+         </div>
+         <button mat-button (click)="showRoutine()"> search </button>
+  </div>
+</div>
+
+<!-- search Table -->
+<div *ngIf="istable">
+  <table class="table table-dark table-striped-columns">
+      <thead>
+        <tr style="font-weight: 200px; margin:1px;text-align: center;">
+          <td>Day</td>
+          <td>Time</td>
+          <td>Work</td>
+          <td>Attendance</td>
+         
+        </tr>
+      </thead>
+      <tbody *ngFor="let t of searchRoutine " >
+        <tr style="text-align: center;">
+          <td>{{t.day}}</td>
+          <td>{{t.time}}</td>
+          <td>{{t.work}}</td>
+          <td>{{t.attendance}}</td>
+         
+          
+        </tr>
+      </tbody>
+    </table>
+</div>
+<!-- end of search Table -->
+<div>
+
+  <button (click)="subWork1()">10 pm-12 Pm</button>
+
+<button style="margin-left: 100px;"   (click)="subWork2()">12 Pm - 2 Pm</button>
+
+
+<button style="margin-left: 100px;"   (click)="subWork3()"> 2 Pm - 4 Pm </button>
+
+<button style="margin-left: 100px;"   (click)="back()"> Back </button>
+</div>
+
+<!-- 10 Am TO 12 Pm  -->
+
+<div *ngIf="iswork1" style="margin-left: 25%;margin-top: 50px;">
+    <h3>Assigning Work For time 10 Am to 12 Pm</h3>
+    <form [formGroup]="workForm1" (ngSubmit)="work1()">
+        <div class="col-6">
+            <label for="yourUsername" class="form-label">Name</label>
+            
+            <select class="form-select" aria-label="Default select example" #email (change)="stffEmail(email.value)" >
+              <option selected>Select the name of staff</option>
+               <option *ngFor=" let t of staffList" value="{{t.staffEmail}}"> {{t.name}}</option>
+                           </select>
+             </div>
+
+
+             <div class="col-6">
+                <label for="yourUsername" class="form-label">work</label>
+                <div class="input-group has-validation">
+                   
+                    <input type="text" placeholder="work" class="form-control"  formControlName="work" required>
+                </div>
+             </div>
+
+
+             <div class="col-6">
+                <label for="yourUsername" class="form-label">day</label>
+                <div class="input-group has-validation">
+                  <input type="date" placeholder="work" class="form-control"  formControlName="day" required>
+                </div>
+             </div>
+
+             <div class=" col-6">
+                <label class="form-label">Addendance </label>
+                <mat-radio-group aria-label="Select an option" class="form-control" formControlName="attendance"  >
+                    <mat-radio-button value="pending">pending</mat-radio-button>
+                    <mat-radio-button value="present">Present</mat-radio-button>
+                    <mat-radio-button value="absent">Absent</mat-radio-button>
+                    
+                  </mat-radio-group>
+
+             </div>
+             
+         <button type="submit"  > submit</button>
+
+    </form>
+     
+  </div>
+  <!-- work 2 -->
+ 
+  <div *ngIf="iswork2" style="margin-left: 25%;margin-top: 50px;">
+    <h3>Assigning Work For time 12Pm to 2Pm</h3>
+    <form [formGroup]="workForm2" (ngSubmit)="work2()">
+        <div class="col-6">
+            <label for="yourUsername" class="form-label">Name</label>
+            
+            <select class="form-select" aria-label="Default select example" #email (change)="stffEmail(email.value)" >
+              <option selected>Select the name of staff</option>
+               <option *ngFor=" let t of staffList" value="{{t.staffEmail}}"> {{t.name}}</option>
+                           </select>
+             </div>
+
+
+             <div class="col-6">
+                <label for="yourUsername" class="form-label">work</label>
+                <div class="input-group has-validation">
+                   
+                    <input type="text" placeholder="work" class="form-control"  formControlName="work" required>
+                </div>
+             </div>
+
+
+             <div class="col-6">
+                <label for="yourUsername" class="form-label">day</label>
+                <div class="input-group has-validation">
+                  <input type="date" placeholder="work" class="form-control"  formControlName="day" required>
+                </div>
+             </div>
+
+             <div class=" col-6">
+                <label class="form-label">Addendance </label>
+                <mat-radio-group aria-label="Select an option"  formControlName="attendance" class="form-control" >
+                    <mat-radio-button value="pending">pending</mat-radio-button>
+                    <mat-radio-button value="present">Present</mat-radio-button>
+                    <mat-radio-button value="absent">Absent</mat-radio-button>
+                    
+                  </mat-radio-group>
+
+             </div>
+             
+              <button type="submit" > submit</button>
+       
+        
+
+    </form>
+     
+  </div>
+
+<!-- work3 -->
+
+<div *ngIf="iswork3" style="margin-left: 25%;margin-top: 50px;">
+    <h3>Assigning Work For time 2Pm to 4Pm</h3>
+    <form [formGroup]="workForm3" (ngSubmit)="work3()">
+        <div class="col-6">
+            <label for="yourUsername" class="form-label">Name</label>
+            
+            <select class="form-select" aria-label="Default select example" #email (change)="stffEmail(email.value)" >
+              <option selected>Select the name of staff</option>
+               <option *ngFor=" let t of staffList" value="{{t.staffEmail}}"> {{t.name}}</option>
+                           </select>
+             </div>
+
+
+             <div class="col-6">
+                <label for="yourUsername" class="form-label">work</label>
+                <div class="input-group has-validation">
+                   
+                    <input type="text" placeholder="work" class="form-control"  formControlName="work" required>
+                </div>
+             </div>
+
+
+             <div class="col-6">
+                <label for="yourUsername" class="form-label">day</label>
+                <div class="input-group has-validation">
+                  <input type="date" placeholder="work" class="form-control"  formControlName="day" required>
+                </div>
+             </div>
+
+             <div class=" col-6">
+                <label class="form-label">Addendance </label>
+                <mat-radio-group aria-label="Select an option"  formControlName="attendance" class="form-control" >
+                    <mat-radio-button value="pending">pending</mat-radio-button>
+                    <mat-radio-button value="present">Present</mat-radio-button>
+                    <mat-radio-button value="absent">Absent</mat-radio-button>
+                    
+                  </mat-radio-group>
+
+             </div>
+             
+         <button type="submit" > submit</button>
+
+    </form>
+     
+  </div>
+  

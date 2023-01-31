@@ -1,0 +1,72 @@
+
+<mat-toolbar  color="primary">
+    <mat-toolbar-row>
+      <div fxShow="true" fxHide.gt-sm="true">
+        <button mat-icon-button>
+          <mat-icon (click)="sidenav.toggle();">menu</mat-icon>
+      </button>
+      </div>
+      <span style="font-size: larger;">New App</span>
+      
+      <div fxShow="true" fxHide.lt-md="true" style="margin-left: 800px;display: inline-flex;">
+        <!-- The following menu items will be hidden on both SM and XS screen sizes -->
+        <a  class="nav-link" mat-button style="font-size:medium;" routerLink="/dashboard/home" matTooltip="Home">Home</a>
+        <a  class="nav-link" mat-button style="font-size:medium;padding-left: 10px;padding-right: 10px;" 
+        routerLink="#about" matTooltip="About Us">About Us</a>
+        <a  class="nav-link" mat-button style="font-size:medium;" routerLink="/dashboard/signup" matTooltip="sign Up">Sign Up</a>
+        <a  class="nav-link" mat-button style="font-size:medium;" routerLink="/dashboard/login" matTooltip="Login">login</a>
+    
+        
+      </div>
+    
+    </mat-toolbar-row>
+    
+    
+    </mat-toolbar>
+    
+    <mat-sidenav-container fxFlexFill class="example-container">
+      <mat-sidenav #sidenav fxLayout="column" class="home">
+        <div fxLayout="column">
+          <a (click)="sidenav.toggle()"  mat-button></a>
+          
+          <mat-nav-list >
+           <div style="display: inline-flex;" >
+            <i class="fa-solid fa-house icon" >
+            </i> <a mat-list-item  routerLink="/dashboard/home" >Home</a>
+           </div>
+           
+            <mat-divider></mat-divider>
+            <div style="display: inline-flex;">
+                <i class="fa-solid fa-address-card icon" ></i>
+                <a mat-list-item  routerLink="#about"  >About us</a>
+            </div>
+            
+            <mat-divider></mat-divider>
+            <div  style="display: inline-flex;">
+                <i class="fa-sharp fa-solid fa-arrow-right-to-bracket icon"></i>
+                <a mat-list-item  routerLink="/dashboard/signup" >Sign Up</a>
+            </div>
+     
+            
+            <mat-divider></mat-divider>
+            <div style="display: inline-flex;">
+                <i class="fa-solid fa-arrow-right-to-bracket icon"></i>
+                <a mat-list-item  routerLink="/dashboard/login" >Login</a>
+            </div>
+          
+          
+            
+           
+            
+         </mat-nav-list>
+        </div>
+      </mat-sidenav>
+    
+        <mat-sidenav-content style="height:88vh" >
+         
+       <router-outlet></router-outlet>
+    
+        </mat-sidenav-content>
+    
+    </mat-sidenav-container>
+    
